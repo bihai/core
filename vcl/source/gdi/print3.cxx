@@ -312,8 +312,9 @@ void Printer::ImplPrintJob( const boost::shared_ptr<PrinterController>& i_pContr
              // && ! pController->isDirectPrint()
            )
         {
-            ScopedVclPtr<MessageDialog> aBox(new MessageDialog(NULL, "ErrorNoPrinterDialog",
-                "vcl/ui/errornoprinterdialog.ui"));
+            ScopedVclPtrInstance<MessageDialog> aBox(
+                nullptr, "ErrorNoPrinterDialog",
+                "vcl/ui/errornoprinterdialog.ui");
             aBox->Execute();
         }
         pController->setValue( OUString( "IsDirect" ),
@@ -461,8 +462,9 @@ void Printer::ImplPrintJob( const boost::shared_ptr<PrinterController>& i_pContr
     {
         if( pController->getFilteredPageCount() == 0 )
         {
-            ScopedVclPtr<MessageDialog> aBox(new MessageDialog(NULL, "ErrorNoContentDialog",
-                "vcl/ui/errornocontentdialog.ui"));
+            ScopedVclPtrInstance<MessageDialog> aBox(
+                nullptr, "ErrorNoContentDialog",
+                "vcl/ui/errornocontentdialog.ui");
             aBox->Execute();
             return;
         }
