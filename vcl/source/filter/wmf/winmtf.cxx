@@ -230,8 +230,7 @@ WinMtfFontStyle::WinMtfFontStyle( LOGFONTW& rFont )
     {
         // #i117968# VirtualDevice is not thread safe, but filter is used in multithreading
         SolarMutexGuard aGuard;
-        VclPtr<VirtualDevice> pVDev = new VirtualDevice();
-
+        VclPtrInstance< VirtualDevice > pVDev;
         // converting the cell height into a font height
         aFont.SetSize( aFontSize );
         pVDev->SetFont( aFont );
@@ -1436,8 +1435,7 @@ void WinMtfOutput::DrawText( Point& rPosition, OUString& rText, long* pDXArry, b
     {
         // #i117968# VirtualDevice is not thread safe, but filter is used in multithreading
         SolarMutexGuard aGuard;
-        VclPtr<VirtualDevice> pVDev = new VirtualDevice();
-
+        VclPtrInstance< VirtualDevice > pVDev;
         sal_Int32 nTextWidth;
         pVDev->SetMapMode( MapMode( MAP_100TH_MM ) );
         pVDev->SetFont( maFont );
@@ -1485,8 +1483,7 @@ void WinMtfOutput::DrawText( Point& rPosition, OUString& rText, long* pDXArry, b
         {
             // #i117968# VirtualDevice is not thread safe, but filter is used in multithreading
             SolarMutexGuard aGuard;
-            VclPtr<VirtualDevice> pVDev = new VirtualDevice();
-
+            VclPtrInstance< VirtualDevice > pVDev;
             pDX = new long[ rText.getLength() ];
             pVDev->SetMapMode( MAP_100TH_MM );
             pVDev->SetFont( maLatestFont );
@@ -1504,7 +1501,7 @@ void WinMtfOutput::ImplDrawBitmap( const Point& rPos, const Size& rSize, const B
     BitmapEx aBmpEx( rBitmap );
     if ( mbComplexClip )
     {
-        VclPtr<VirtualDevice> pVDev = new VirtualDevice();
+        VclPtrInstance< VirtualDevice > pVDev;
         MapMode aMapMode( MAP_100TH_MM );
         aMapMode.SetOrigin( Point( -rPos.X(), -rPos.Y() ) );
         const Size aOutputSizePixel( pVDev->LogicToPixel( rSize, aMapMode ) );

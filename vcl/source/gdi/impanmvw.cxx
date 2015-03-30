@@ -154,7 +154,7 @@ void ImplAnimView::getPosSize( const AnimationBitmap& rAnm, Point& rPosPix, Size
 
 void ImplAnimView::drawToPos( sal_uLong nPos )
 {
-    ScopedVclPtr<VirtualDevice> aVDev( new VirtualDevice() );
+    ScopedVclPtrInstance< VirtualDevice > aVDev;
     boost::scoped_ptr<vcl::Region> pOldClip(!maClip.IsNull() ? new vcl::Region( mpOut->GetClipRegion() ) : NULL);
 
     aVDev->SetOutputSizePixel( maSzPix, false );

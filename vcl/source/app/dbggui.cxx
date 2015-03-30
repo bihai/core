@@ -370,7 +370,7 @@ void DbgDialog::RequestHelp( const HelpEvent& rHEvt )
 {
     if ( rHEvt.GetMode() & HelpEventMode::CONTEXT )
     {
-        ScopedVclPtr<DbgInfoDialog> aInfoDialog(new DbgInfoDialog( this, true ) );
+        ScopedVclPtrInstance< DbgInfoDialog > aInfoDialog(  this, true  );
         OUString aHelpText;
         const sal_Char** pHelpStrs = pDbgHelpText;
         while ( *pHelpStrs )
@@ -834,7 +834,7 @@ void DbgGUIStart()
 
     if ( pData )
     {
-        ScopedVclPtr<DbgDialog> pDialog(new DbgDialog);
+        ScopedVclPtrInstance< DbgDialog > pDialog;
         // we switch off dialog tests for the debug dialog
         sal_uLong nOldFlags = pData->nTestFlags;
         pData->nTestFlags &= ~DBG_TEST_DIALOG;

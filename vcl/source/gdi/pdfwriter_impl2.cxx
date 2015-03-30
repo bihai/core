@@ -431,7 +431,7 @@ void PDFWriterImpl::playMetafile( const GDIMetaFile& i_rMtf, vcl::PDFExtOutDevDa
                         if ( nPixelX && nPixelY )
                         {
                             Size aDstSizePixel( nPixelX, nPixelY );
-                            ScopedVclPtr<VirtualDevice> pVDev(new VirtualDevice);
+                            ScopedVclPtrInstance< VirtualDevice > pVDev;
                             if( pVDev->SetOutputSizePixel( aDstSizePixel ) )
                             {
                                 Bitmap          aPaint, aMask;

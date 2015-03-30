@@ -328,7 +328,7 @@ void Printer::ImplPrintJob( const boost::shared_ptr<PrinterController>& i_pContr
     if( ! pController->getPrinter() )
     {
         OUString aPrinterName( i_rInitSetup.GetPrinterName() );
-        VclPtr<Printer> pPrinter( new Printer( aPrinterName ) );
+        VclPtrInstance< Printer > pPrinter(  aPrinterName  );
         pPrinter->SetJobSetup( i_rInitSetup );
         pController->setPrinter( pPrinter );
     }
@@ -479,7 +479,7 @@ void Printer::ImplPrintJob( const boost::shared_ptr<PrinterController>& i_pContr
     {
         try
         {
-            ScopedVclPtr<PrintDialog> aDlg(new PrintDialog( NULL, i_pController ));
+            ScopedVclPtrInstance< PrintDialog > aDlg(  nullptr, i_pController  );
             if( ! aDlg->Execute() )
             {
                 i_pController->abortJob();
