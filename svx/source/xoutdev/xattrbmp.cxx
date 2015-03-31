@@ -138,7 +138,7 @@ const GraphicObject& XOBitmap::GetGraphicObject() const
 
 void XOBitmap::Bitmap2Array()
 {
-    ScopedVclPtr<VirtualDevice> pVDev( new VirtualDevice() );
+    ScopedVclPtrInstance< VirtualDevice > pVDev;
     bool            bPixelColor = false;
     const Bitmap    aBitmap( GetBitmap() );
     const sal_uInt16    nLines = 8; // type dependent
@@ -173,7 +173,7 @@ void XOBitmap::Bitmap2Array()
 /// convert array, fore- and background color into a bitmap
 void XOBitmap::Array2Bitmap()
 {
-    ScopedVclPtr<VirtualDevice> pVDev( new VirtualDevice() );
+    ScopedVclPtrInstance< VirtualDevice > pVDev;
     sal_uInt16 nLines = 8; // type dependent
 
     if( !pPixelArray )

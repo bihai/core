@@ -243,7 +243,7 @@ void XMLFilterSettingsDialog::onNew()
     aTempInfo.maDocumentService = "com.sun.star.text.TextDocument";
 
     // execute XML Filter Dialog
-    ScopedVclPtr<XMLFilterTabDialog> aDlg(new XMLFilterTabDialog( this, *getXSLTDialogResMgr(), mxContext, &aTempInfo ) );
+    ScopedVclPtrInstance< XMLFilterTabDialog > aDlg( this, *getXSLTDialogResMgr(), mxContext, &aTempInfo );
     if ( aDlg->Execute() == RET_OK )
     {
         // insert the new filter
@@ -264,7 +264,7 @@ void XMLFilterSettingsDialog::onEdit()
         filter_info_impl* pOldInfo = (filter_info_impl*)pEntry->GetUserData();
 
         // execute XML Filter Dialog
-        ScopedVclPtr<XMLFilterTabDialog> aDlg(new XMLFilterTabDialog( this, *getXSLTDialogResMgr(), mxContext, pOldInfo ) );
+        ScopedVclPtrInstance< XMLFilterTabDialog > aDlg( this, *getXSLTDialogResMgr(), mxContext, pOldInfo );
         if ( aDlg->Execute() == RET_OK )
         {
             filter_info_impl* pNewInfo = aDlg->getNewFilterInfo();
@@ -789,7 +789,7 @@ void XMLFilterSettingsDialog::onTest()
     {
         filter_info_impl* pInfo = (filter_info_impl*)pEntry->GetUserData();
 
-        ScopedVclPtr<XMLFilterTestDialog> aDlg(new XMLFilterTestDialog(this, mxContext));
+        ScopedVclPtrInstance< XMLFilterTestDialog > aDlg(this, mxContext);
         aDlg->test( *pInfo );
     }
 }
@@ -807,7 +807,7 @@ void XMLFilterSettingsDialog::onDelete()
         OUString aMessage(RESIDSTR(STR_WARN_DELETE));
         aMessage = aMessage.replaceFirst( aPlaceHolder, pInfo->maFilterName );
 
-        ScopedVclPtr<WarningBox> aWarnBox(new WarningBox(this, (WinBits)(WB_YES_NO | WB_DEF_YES), aMessage ));
+        ScopedVclPtrInstance< WarningBox > aWarnBox(this, (WinBits)(WB_YES_NO | WB_DEF_YES), aMessage );
         if( aWarnBox->Execute() == RET_YES )
         {
             try
@@ -937,7 +937,7 @@ void XMLFilterSettingsDialog::onSave()
             aMsg = aMsg.replaceFirst( sPlaceholder, aURL.GetName() );
         }
 
-        ScopedVclPtr<InfoBox> aBox(new InfoBox(this, aMsg ));
+        ScopedVclPtrInstance< InfoBox > aBox(this, aMsg );
         aBox->Execute();
     }
 }
@@ -1003,7 +1003,7 @@ void XMLFilterSettingsDialog::onOpen()
             aMsg = aMsg.replaceFirst( sPlaceholder, OUString::number( nFilters ) );
         }
 
-        ScopedVclPtr<InfoBox> aBox(new InfoBox(this, aMsg ));
+        ScopedVclPtrInstance< InfoBox > aBox(this, aMsg );
         aBox->Execute();
     }
 }

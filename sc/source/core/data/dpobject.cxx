@@ -3204,7 +3204,7 @@ uno::Reference<sdbc::XRowSet> ScDPCollection::DBCaches::createRowSet(
     catch ( const sdbc::SQLException& rError )
     {
         //! store error message
-        ScopedVclPtr<InfoBox> aInfoBox(new InfoBox( 0, OUString(rError.Message) ) );
+        ScopedVclPtrInstance< InfoBox > aInfoBox( nullptr, OUString(rError.Message) );
         aInfoBox->Execute();
     }
     catch ( uno::Exception& )

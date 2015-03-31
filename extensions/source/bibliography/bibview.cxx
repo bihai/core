@@ -143,7 +143,7 @@ namespace bib
             {
                 sErrorString += "\n";
                 sErrorString += BIB_RESSTR(RID_MAP_QUESTION);
-                ScopedVclPtr<QueryBox> aQuery(new QueryBox(this, WB_YES_NO, sErrorString) );
+                ScopedVclPtrInstance< QueryBox > aQuery(this, WB_YES_NO, sErrorString);
                 aQuery->SetDefaultCheckBoxText();
                 short nResult = aQuery->Execute();
                 BibModul::GetConfig()->SetShowColumnAssignmentWarning(

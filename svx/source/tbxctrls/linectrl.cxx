@@ -402,7 +402,7 @@ void SvxLineEndWindow::FillValueSet()
     if( pLineEndList.is() )
     {
         XLineEndEntry*      pEntry  = NULL;
-        ScopedVclPtr<VirtualDevice> pVD(new VirtualDevice());
+        ScopedVclPtrInstance< VirtualDevice > pVD;
 
         long nCount = pLineEndList->Count();
 
