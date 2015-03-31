@@ -1061,8 +1061,8 @@ NameClashResolveDialogResult executeSimpleNameClashResolveDialog( vcl::Window *p
     if ( !xManager.get() )
         return ABORT;
 
-    ScopedVclPtr<NameClashDialog> aDialog(new NameClashDialog(pParent, xManager.get(), rTargetFolderURL,
-                             rClashingName, rProposedNewName, bAllowOverwrite) );
+    ScopedVclPtrInstance<NameClashDialog> aDialog(pParent, xManager.get(), rTargetFolderURL,
+                                                  rClashingName, rProposedNewName, bAllowOverwrite);
 
     NameClashResolveDialogResult eResult = (NameClashResolveDialogResult) aDialog->Execute();
     rProposedNewName = aDialog->getNewName();
@@ -1209,8 +1209,8 @@ UUIInteractionHelper::handleMacroConfirmRequest(
     if ( pResMgr.get() )
     {
         bool bShowSignatures = aSignInfo.getLength() > 0;
-        ScopedVclPtr<MacroWarning> aWarning(new MacroWarning(
-            getParentProperty(), bShowSignatures, *pResMgr.get()) );
+        ScopedVclPtrInstance<MacroWarning> aWarning(
+            getParentProperty(), bShowSignatures, *pResMgr.get() );
 
         aWarning->SetDocumentURL( aDocumentURL );
         if ( aSignInfo.getLength() > 1 )

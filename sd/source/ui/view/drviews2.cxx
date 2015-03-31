@@ -1447,10 +1447,10 @@ void DrawViewShell::FuTemporary(SfxRequest& rReq)
                             || aLayerName.isEmpty() )
                         {
                             // name already exists
-                            ScopedVclPtr<WarningBox> aWarningBox (new WarningBox(
+                            ScopedVclPtrInstance<WarningBox> aWarningBox (
                                 GetParentWindow(),
                                 WinBits( WB_OK ),
-                                SD_RESSTR(STR_WARN_NAME_DUPLICATE)));
+                                SD_RESSTR(STR_WARN_NAME_DUPLICATE));
                             aWarningBox->Execute();
                         }
                         else
@@ -1616,10 +1616,10 @@ void DrawViewShell::FuTemporary(SfxRequest& rReq)
                              aLayerName != aOldLayerName) || aLayerName.isEmpty() )
                         {
                             // name already exists
-                            ScopedVclPtr<WarningBox> aWarningBox (new WarningBox(
+                            ScopedVclPtrInstance<WarningBox> aWarningBox (
                                 GetParentWindow(),
                                 WinBits( WB_OK ),
-                                SD_RESSTR(STR_WARN_NAME_DUPLICATE)));
+                                SD_RESSTR(STR_WARN_NAME_DUPLICATE));
                             aWarningBox->Execute();
                         }
                         else

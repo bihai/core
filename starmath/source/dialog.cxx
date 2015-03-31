@@ -547,7 +547,7 @@ IMPL_LINK( SmFontTypeDialog, MenuSelectHdl, Menu *, pMenu )
 
     if (pActiveListBox)
     {
-        VclPtr<SmFontDialog> pFontDialog = new SmFontDialog(this, pFontListDev, bHideCheckboxes);
+        VclPtrInstance<SmFontDialog> pFontDialog(this, pFontListDev, bHideCheckboxes);
 
         pActiveListBox->WriteTo(*pFontDialog);
         if (pFontDialog->Execute() == RET_OK)
@@ -1505,7 +1505,7 @@ IMPL_LINK_NOARG( SmSymbolDialog, SymbolChangeHdl )
 
 IMPL_LINK_NOARG(SmSymbolDialog, EditClickHdl)
 {
-    VclPtr<SmSymDefineDialog> pDialog = new SmSymDefineDialog(this, pFontListDev, rSymbolMgr);
+    VclPtrInstance<SmSymDefineDialog> pDialog(this, pFontListDev, rSymbolMgr);
 
     // set current symbol and SymbolSet for the new dialog
     const OUString  aSymSetName (m_pSymbolSets->GetSelectEntry()),

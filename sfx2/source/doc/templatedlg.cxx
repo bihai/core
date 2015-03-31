@@ -638,7 +638,7 @@ IMPL_LINK(SfxTemplateManagerDlg, RepositoryMenuSelectHdl, Menu*, pMenu)
             {
                 OUString aMsg(SfxResId(STR_MSG_ERROR_REPOSITORY_NAME).toString());
                 aMsg = aMsg.replaceFirst("$1",pPlace->GetName());
-                ScopedVclPtr<MessageDialog>(new MessageDialog(this, aMsg))->Execute();
+                ScopedVclPtrInstance<MessageDialog>(this, aMsg)->Execute();
             }
         }
     }
