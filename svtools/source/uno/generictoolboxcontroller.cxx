@@ -74,7 +74,7 @@ void SAL_CALL GenericToolboxController::dispose()
 throw ( RuntimeException, std::exception )
 {
     SolarMutexGuard aSolarMutexGuard;
-    m_pToolbox.disposeAndClear();
+    m_pToolbox.clear();
     m_nID = 0;
     svt::ToolboxController::dispose();
 }
